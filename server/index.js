@@ -8,6 +8,7 @@
  * process.env.TWILIO_API_SECRET
  */
 require('dotenv').load();
+var Firebase = require('./firebase');
 
 var http = require('http');
 var path = require('path');
@@ -19,32 +20,35 @@ var randomName = require('./randomname');
 // Create Express webapp.
 var app = express();
 
-// Set up the paths for the examples.
-[
-  'bandwidthconstraints',
-  'codecpreferences',
-  'localvideofilter',
-  'localvideosnapshot',
-  'mediadevices'
-].forEach(function(example) {
-  var examplePath = path.join(__dirname, `../examples/${example}/public`);
-  app.use(`/${example}`, express.static(examplePath));
-});
-
 // Set up the path for the quickstart.
-var quickstartPath = path.join(__dirname, '../quickstart/public');
-app.use('/quickstart', express.static(quickstartPath));
+var signInPath = path.join(__dirname, '../frontend/signIn');
+app.use('/signIn', express.static(signInPath));
 
-// Set up the path for the examples page.
-var examplesPath = path.join(__dirname, '../examples');
-app.use('/examples', express.static(examplesPath));
+var signUpPath = path.join(__dirname, '../frontend/signUp');
+app.use('/signUp', express.static(signUpPath));
+
+var homePath = path.join(__dirname, '../frontend/home');
+app.use('/home', express.static(homePath));
 
 /**
- * Default to the Quick Start application.
+ * Default to the SignIn.
  */
-app.get('/', function(request, response) {
-  response.redirect('/quickstart');
+app.get('/', function(req, res) {
+  console.log(Firebase);
+  Firebase.getUser(res);
 });
+
+app.post('/createUser', function(req, res){
+  Firebase.createUser(req.body, res);
+});
+
+app.get('/logIn', function(req, res){
+  Firebase.signIn(req.query.email, req.query.password, res);
+});
+
+app.get('/getUser', function(req, res){
+  Firebase.getUser(res);
+})
 
 /**
  * Generate an Access Token for a chat application user - it generates a random
@@ -82,3 +86,5 @@ var port = process.env.PORT || 3000;
 server.listen(port, function() {
   console.log('Express server running on *:' + port);
 });
+
+
