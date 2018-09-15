@@ -24,8 +24,7 @@ recognition.onerror = function(event) {
 recognition.onresult = function(event) { 
     var current = event.resultIndex; 
     var transcript = event.results[current][0].transcript; 
-    console.log(transcript, "               ", event); 
-    text.textContent += transcript;
+    text.textContent= text.textContent + " " + transcript;
 }
 
 recognition.onaudioend = function(){
