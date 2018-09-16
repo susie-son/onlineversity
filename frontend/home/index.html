@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
-    <title>ONLINEVERSITY</title>
+    <title>IDEAS.</title>
     
     <style>
         #topBlackBar {
@@ -27,13 +27,12 @@
 
   </head>
 
-  <body style="font-family:lato">
-    <div id="topBlackBar">
-      <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;"><b>ONLINE</b>VERSITY</h1>
-    </div>
+  <body style="font-family:lato; background-image:url(ideas.png); background-size:cover; background-repeat: no-repeat">
+      <div id="topBlackBar">
+          <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;">IDEAS</h1>
+      </div>
     
-    
-  <div class = "container-fluid" style="margin:2%">
+  <div class = "container-fluid" style="left:2%; margin-top:2%">
     <div class="row">
         <div class="col-2">
             <div class="btn-group-vertical">
@@ -49,20 +48,20 @@
         <div class="col">
             <div class = "row">
                 <div id="addRoomBtn" style="margin-bottom:10px; margin-left:15px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoomModal" style="font-size: 2em; text-align: center;">⊕</button>
+                    <button type="button" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#addRoomModal" style="font-size: 1.5em; text-align: center;" id="cards">⊕</button>
                 </div>
             </div>
 
             <!-- Modal -->
-<div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Create a Room</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+        <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">CREATE A ROOM</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+              </div>
             <div class="modal-body">
                     <form>
                             <div class="form-group">
@@ -91,31 +90,31 @@
         
         <div class="col" id="cards-col">
             <div class = "row">
-                <div class="card" id="cards">
+                <div class="card bg-dark text-white" id="cards">
                   <div class="card-body">
                     <h5 class="card-title">Room Example 1</h5>
                     <p class="card-text">Members: 2</p>
-                    <a href="#" class="btn btn-primary" id="joinRm1">Go to Room</a>
+                    <a href="#" class="btn btn-outline-light btn-block" id="joinRm1">GO TO ROOM</a>
                   </div>
                 </div>
             </div>
 
             <div class = "row">
-                <div class="card" id="cards">
+                <div class="card bg-dark text-white" id="cards">
                     <div class="card-body">
-                      <h5 class="card-title">Room Example 4</h5>
+                      <h5 class="card-title">Room Example 2</h5>
                       <p class="card-text">Members: 1</p>
-                      <a href="#" class="btn btn-primary">Go to Room</a>
+                      <a href="#" class="btn btn-outline-light btn-block">GO TO ROOM</a>
                     </div>
                 </div>
             </div>
 
             <div class = "row">
-                <div class="card" id="cards">
+                <div class="card bg-dark text-white" id="cards">
                     <div class="card-body">
-                      <h5 class="card-title">Room Example 7</h5>
+                      <h5 class="card-title">Room Example 3</h5>
                       <p class="card-text">Members: 5</p>
-                      <a href="#" class="btn btn-primary">Go to Room</a>
+                      <a href="#" class="btn btn-outline-light btn-block">GO TO ROOM</a>
                     </div>
                 </div>
             </div>

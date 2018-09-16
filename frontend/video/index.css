@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
-body,p {
+body,
+p {
   padding: 0;
   margin: 0;
+}
+
+body {
+  background: #ffffff;
 }
 
 div#remote-media {
