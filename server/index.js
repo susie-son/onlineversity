@@ -8,6 +8,7 @@
  * process.env.TWILIO_API_SECRET
  */
 require('dotenv').load();
+var Firebase = require('./firebase');
 
 var http = require('http');
 var path = require('path');
@@ -19,31 +20,54 @@ var randomName = require('./randomname');
 // Create Express webapp.
 var app = express();
 
-// Set up the paths for the examples.
-[
-  'bandwidthconstraints',
-  'codecpreferences',
-  'localvideofilter',
-  'localvideosnapshot',
-  'mediadevices'
-].forEach(function(example) {
-  var examplePath = path.join(__dirname, `../examples/${example}/public`);
-  app.use(`/${example}`, express.static(examplePath));
-});
-
 // Set up the path for the quickstart.
-var quickstartPath = path.join(__dirname, '../quickstart/public');
-app.use('/quickstart', express.static(quickstartPath));
+var signInPath = path.join(__dirname, '../frontend/signIn');
+app.use('/signIn', express.static(signInPath));
 
-// Set up the path for the examples page.
-var examplesPath = path.join(__dirname, '../examples');
-app.use('/examples', express.static(examplesPath));
+var signUpPath = path.join(__dirname, '../frontend/signUp');
+app.use('/signUp', express.static(signUpPath));
+
+var homePath = path.join(__dirname, '../frontend/home');
+app.use('/home', express.static(homePath));
+
+var roomPath = path.join(__dirname, '../frontend/video');
+app.use('/room*', express.static(roomPath));
 
 /**
- * Default to the Quick Start application.
+ * Default to the SignIn.
  */
-app.get('/', function(request, response) {
-  response.redirect('/quickstart');
+app.get('/', function(req, res) {
+  console.log(Firebase);
+  Firebase.getUser(res);
+});
+
+app.post('/createUser', function(req, res){
+  Firebase.createUser(JSON.parse(req.query.user), res);
+});
+
+app.get('/logIn', function(req, res){
+  Firebase.signIn(req.query.email, req.query.password, res);
+});
+
+app.get('/getUser', function(req, res){
+  Firebase.getUser(res);
+})
+
+app.get('/joinRoom', function(req, res){
+  Firebase.joinRoom(req.query.roomID, req.query.course, res);
+});
+
+//data is an object containing memberCount, name, tags object
+app.get('/createRoom', function(req, res){
+  Firebase.createRoom(req.query.data, req.query.course, res);
+});
+
+app.get('/leaveRoom', function(req, res){
+  Firebase.leaveRoom(req.query.roomID, req.query.course, res);
+});
+
+app.get('/getRooms', function(req, res){
+  Firebase.getRooms(req.query.course, res);
 });
 
 /**
@@ -82,3 +106,5 @@ var port = process.env.PORT || 3000;
 server.listen(port, function() {
   console.log('Express server running on *:' + port);
 });
+
+
