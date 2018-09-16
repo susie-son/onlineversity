@@ -2,7 +2,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
     var user = {};
     var list = {};
-    var course;
+    var course = "cpsc";
     $(document).ready(function () {
         $.get('/getUser', function (data, textStatus, jqXHR){
             user = data;
@@ -42,19 +42,32 @@
       card.className = "card";
       card.id = "cards";
       let cardbody = document.createElement("div");
+      cardbody.className = "card-body";
       let cardtitle = document.createElement("h5");
-      let cardtitle_text = document.createTextNode(document.querySelector("#roomName".value));
+      let cardtitle_text = document.createTextNode(document.querySelector("#roomName").value);
+      cardtitle.appendChild(cardtitle_text);
       let cardtext = document.createElement("p");
       let cardtext_text = document.createTextNode("Members: 1");
+      cardtext.appendChild(cardtext_text);
       let joinBtn = document.createElement("a");
+      joinBtn.className = "btn btn-primary";
       let joinBtnText = document.createTextNode("Go to Room");
-      // card.appendChild();
+      joinBtn.appendChild(joinBtnText);
+      joinBtn.href = "#";
+      cardbody.appendChild(cardtitle);
+      cardbody.appendChild(cardtext);
+      cardbody.appendChild(joinBtn);
+      card.appendChild(cardbody);
+      let row = document.createElement("div");
+      row.className = "row";
+      row.appendChild(card);
+      document.querySelector("#cards-col").appendChild(row);
     });
 
     function joinRoom(course, roomID){
         $.get('/joinRooms', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
             //success
-            window.location.href="http://localhost:3000/room/";
+            window.location.href = 'http://'+ window.location.host + '/room/'+id;
         });
     }
 
