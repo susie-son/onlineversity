@@ -27,101 +27,90 @@
 
   </head>
 
-  <body style="font-family:lato">
+
+  <body style="font-family:lato; background-image:url(ideas.png); background-size:cover; background-repeat: no-repeat">
     <div id="topBlackBar">
       <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;"><b>ONLINE</b>VERSITY</h1>
     </div>
     
-    
-  <div class = "container-fluid" style="margin:2%">
-    <div class="row">
-        <div class="col-2">
-            <div class="btn-group-vertical">
-                <button type="button" class="btn-dark btn-lg btn-block" id="cpsc">Computer Science</button>
-                <button type="button" class="btn-dark btn-lg btn-block" id="math">Mathematics</button>
-                <button type="button" class="btn-dark btn-lg btn-block" id="english">English</button>
-                <button type="button" class="btn-dark btn-lg btn-block" id="physics">Physics</button>
-                <button type="button" class="btn-dark btn-lg btn-block" id="chemistry">Chemistry</button>
-                <button type="button" class="btn-dark btn-lg btn-block" id="biology">Biology</button>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class = "row">
-                <div id="addRoomBtn" style="margin-bottom:10px; margin-left:15px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoomModal" style="font-size: 2em; text-align: center;">⊕</button>
-                </div>
-            </div>
-
+    <div class = "container-fluid" style="left:2%; margin-top:2%">
+      <div class="row">
+          <div class="col-2">
+              <div class="btn-group-vertical">
+                  <button type="button" class="btn-dark btn-lg btn-block" id="cpsc">Computer Science</button>
+                  <button type="button" class="btn-dark btn-lg btn-block" id="math">Mathematics</button>
+                  <button type="button" class="btn-dark btn-lg btn-block" id="english">English</button>
+                  <button type="button" class="btn-dark btn-lg btn-block" id="physics">Physics</button>
+                  <button type="button" class="btn-dark btn-lg btn-block" id="chemistry">Chemistry</button>
+                  <button type="button" class="btn-dark btn-lg btn-block" id="biology">Biology</button>
+              </div>
+          </div>
+  
+          <div class="col">
+              <div class = "row">
+                  <div id="addRoomBtn" style="margin-bottom:10px; margin-left:15px;">
+                      <button type="button" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#addRoomModal" style="font-size: 1.5em; text-align: center;" id="cards">⊕</button>
+                  </div>
+              </div>
+  
             <!-- Modal -->
-<div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Create a room</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                    <form>
-                            <div class="form-group">
-                              <label for="roomName">Room name:</label>
-                              <input type="text" class="form-control" id="roomName" aria-describedby="roomNameHelp" placeholder="Enter Room Name">
-                              <small id="roomNameHelp" class="form-text text-muted">Make sure to keep it short and accurate!</small>
-                            </div>
-                            <div class="form-group">
-                              <label for="tags">Tags</label>
-                              <input type="text" class="form-control" id="tags" aria-describedby="tagsHelp" placeholder="Enter Tags">
-                              <small id="tagsHelp" class="form-text text-muted">Seperate each tag with a comma</small>
-                            </div>
-                            <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="casual_check">
-                              <label class="form-check-label" for="casual_check">Casual Discussion</label>
-                            </div>
-                          </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="createRoomBtn">Create</button>
+        <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">CREATE A ROOM</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                          <div class="form-group">
+                            <label for="roomName">Room name:</label>
+                            <input type="text" class="form-control" id="roomName" aria-describedby="roomNameHelp" placeholder="Enter Room Name">
+                            <small id="roomNameHelp" class="form-text text-muted">Make sure to keep it short and accurate!</small>
+                          </div>
+                          <div class="form-group">
+                            <label for="tags">Tags</label>
+                            <input type="text" class="form-control" id="tags" aria-describedby="tagsHelp" placeholder="Enter Tags">
+                            <small id="tagsHelp" class="form-text text-muted">Seperate each tag with a comma</small>
+                          </div>
+                          <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="casual_check">
+                            <label class="form-check-label" for="casual_check">Casual Discussion</label>
+                          </div>
+                        </form>
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="createRoomBtn">Create</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-        
-        <div class="col" id="cards-col">
-            <div class = "row">
-                <div class="card" id="cards">
-                  <div class="card-body">
-                    <h5 class="card-title">Room Example 1</h5>
-                    <p class="card-text">Members: 2</p>
-                    <a href="#" class="btn btn-primary" id="button-join">Go to Room</a>
+          
+          <div class="col" id="cards-col">
+              <div class = "row">
+                  <div class="card bg-dark text-white" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 1</h5>
+                      <p class="card-text">Members: 2</p>
+                      <a href="#" class="btn btn-outline-light btn-block" id="joinRm1">GO TO ROOM</a>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
 
-            <div class = "row">
-                <div class="card" id="cards">
-                    <div class="card-body">
-                      <h5 class="card-title">Room Example 4</h5>
-                      <p class="card-text">Members: 1</p>
-                      <a href="#" class="btn btn-primary">Go to Room</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class = "row">
-                <div class="card" id="cards">
-                    <div class="card-body">
-                      <h5 class="card-title">Room Example 7</h5>
-                      <p class="card-text">Members: 5</p>
-                      <a href="#" class="btn btn-primary">Go to Room</a>
-                    </div>
-                </div>
-            </div>
+              <div class = "row">
+                  <div class="card bg-dark text-white" id="cards">
+                      <div class="card-body">
+                        <h5 class="card-title">Room Example 3</h5>
+                        <p class="card-text">Members: 5</p>
+                        <a href="#" class="btn btn-outline-light btn-block">GO TO ROOM</a>
+                      </div>
+                  </div>
+             </div>
         </div>
-        </div>
-
       </div>
   </div>
 
