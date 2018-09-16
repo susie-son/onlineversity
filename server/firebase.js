@@ -126,7 +126,7 @@ exports.joinRoom = function(roomID, course){
     });
 }
 
-exports.getGroups = function(course, res){
+exports.getRooms = function(course, res){
   var roomRef = db.ref('rooms/'+course);
   roomRef.once('value', function(snapshot) {
     console.log(snapshot);

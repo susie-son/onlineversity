@@ -9,22 +9,22 @@
         });
     });
 
-    function joinGroup(course, roomID){
-        $.get('/joinGroup', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
+    function joinRoom(course, roomID){
+        $.get('/joinRooms', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
             //success
         });
     }
 
-    function getGroups(course){
-        $.get('/getUser', {course: course}, function (data, textStatus, jqXHR){
+    function getRooms(course){
+        $.get('/getRooms', {course: course}, function (data, textStatus, jqXHR){
             list = data;
             console.log(list);
         });
     }
 
-    function createGroup(details, course){
+    function createRoom(details, course){
         //details is an object containing memberCount, name, tags object
-        $.post('/createGroup', {course: course, data: details}, function (id, textStatus, jqXHR){
+        $.post('/createRoom', {course: course, data: details}, function (id, textStatus, jqXHR){
             if(!id) alert("Failed to create group");
             else window.location.href = 'http://'+ window.location.host + '/room/'+id;
         });

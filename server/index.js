@@ -66,8 +66,8 @@ app.get('/leaveRoom', function(req, res){
   Firebase.leaveRoom(req.query.roomID, req.query.course, res);
 });
 
-app.get('/getGroups', function(req, res){
-  Firebase.getGroups(req.query.course, res);
+app.get('/getRooms', function(req, res){
+  Firebase.getRooms(req.query.course, res);
 });
 
 /**
