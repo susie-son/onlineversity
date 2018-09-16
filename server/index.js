@@ -30,6 +30,9 @@ app.use('/signUp', express.static(signUpPath));
 var homePath = path.join(__dirname, '../frontend/home');
 app.use('/home', express.static(homePath));
 
+var roomPath = path.join(__dirname, '../frontend/video');
+app.use('/room*', express.static(roomPath));
+
 /**
  * Default to the SignIn.
  */
@@ -49,6 +52,23 @@ app.get('/logIn', function(req, res){
 app.get('/getUser', function(req, res){
   Firebase.getUser(res);
 })
+
+app.get('/joinRoom', function(req, res){
+  Firebase.joinRoom(req.query.roomID, req.query.course, res);
+});
+
+//data is an object containing memberCount, name, tags object
+app.get('/createRoom', function(req, res){
+  Firebase.createRoom(req.query.data, req.query.course, res);
+});
+
+app.get('/leaveRoom', function(req, res){
+  Firebase.leaveRoom(req.query.roomID, req.query.course, res);
+});
+
+app.get('/getGroups', function(req, res){
+  Firebase.getGroups(req.query.course, res);
+});
 
 /**
  * Generate an Access Token for a chat application user - it generates a random

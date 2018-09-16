@@ -18,8 +18,6 @@ firebase.initializeApp(config);
     user = userObj;
 
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password).then(function(data){
-      console.log(data);
-
       delete user.password;
       db.ref('users/' + data.user.uid).set(user);
 
@@ -89,18 +87,18 @@ firebase.initializeApp(config);
 
   }
 
-  function createRoom(room, course, callback){
+  exports.createRoom = function(room, course, res){
     var roomsRef = db.ref('rooms/' + course);
 
     roomsRef.on('child_added', function(data) {
         console.log(data, data.val());
         roomsRef.off();
-        callback(data.key);
+        res.send(data.key);
     });
     roomsRef.push(room);   
 }
 
-function leaveRoom(roomID, course){
+exports.leaveRoom = function(roomID, course){
     var roomRef = db.ref('rooms/'+course+'/'+roomID);
     roomRef.once('value').then(function(snapshot) {
         var room = snapshot.val();
@@ -113,7 +111,7 @@ function leaveRoom(roomID, course){
     });
 }
 
-function joinRoom(roomID, course){
+exports.joinRoom = function(roomID, course){
     var roomRef = db.ref('rooms/'+course+'/'+roomID);
     roomRef.once('value').then(function(snapshot) {
         var room = snapshot.val();
@@ -126,6 +124,14 @@ function joinRoom(roomID, course){
         }
         
     });
+}
+
+exports.getGroups = function(course, res){
+  var roomRef = db.ref('rooms/'+course);
+  roomRef.once('value', function(snapshot) {
+    console.log(snapshot);
+    res.send(snapshot);
+  });
 }
 
 
