@@ -37,8 +37,7 @@ app.use('/room*', express.static(roomPath));
  * Default to the SignIn.
  */
 app.get('/', function(req, res) {
-  console.log(Firebase);
-  Firebase.getUser(res);
+  Firebase.getUser(res, true);
 });
 
 app.post('/createUser', function(req, res){

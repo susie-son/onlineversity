@@ -41,11 +41,13 @@ window.addEventListener('beforeunload', leaveRoomIfJoined);
 
 // Obtain a token from the server in order to connect to the Room.
 $.getJSON('/token', function(data) {
+  console.log("getToken");
   identity = data.identity;
   document.getElementById('room-controls').style.display = 'block';
 
   // Bind button to join Room.
   document.getElementById('button-join').onclick = function() {
+    console.log("join-button");
     roomName = document.getElementById('room-name').value;
     if (!roomName) {
       alert('Please enter a room name.');
@@ -71,6 +73,8 @@ $.getJSON('/token', function(data) {
 
   // Bind button to leave Room.
   document.getElementById('button-leave').onclick = function() {
+    console.log("leave-button");
+
     log('Leaving room...');
     activeRoom.disconnect();
   };

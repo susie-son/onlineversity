@@ -48,10 +48,13 @@ firebase.initializeApp(config);
     });
   }
 
-  exports.getUser = function(res){
+  exports.getUser = function(res, start){
     var userAuth = firebase.auth().currentUser;
-    if(!userAuth) {
+    if(!userAuth && !start) {
       res.send(false);
+      return;
+    } else if (start){
+      res.redirect('/signIn');
       return;
     }
     db.ref('/users/' +userAuth.uid).once('value').then(function(snapshot) {

@@ -8,14 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Sign in page</title>
+    <title>ONLINEVERSITY</title>
     
     <style>
         #topBlackBar {
             border-top: 50px solid #000;
         }
 
-      
+        #buttons {
+          text-align:left; margin-bottom:10px; width:120pt;
+        }
+
+        #cards {
+          margin-bottom:10px; width: 20rem
+        }
     </style>
 
   </head>
@@ -25,33 +31,163 @@
       <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;"><b>ONLINE</b>VERSITY</h1>
     </div>
     
-    <form style="margin-top:10%">
-      <h2 style="text-align: center; margin-bottom:20pt">Sign up for an Account</h2>
-      
-      <div class="form-group" style="width: 20%; margin:0 auto; margin-top:10pt">
-          <label for="name">Name</label>
-          <input class="form-control" id="name" placeholder="Enter name" style="margin-top:-5pt">
-      </div>
+    
+  <div class = "container-fluid" style="margin:2%">
+    <div class="row">
+        <div class="col-2">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn-dark btn-lg btn-block" id="cpsc">Computer Science</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="math">Mathematics</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="english">English</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="physics">Physics</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="chemistry">Chemistry</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="biology">Biology</button>
+            </div>
+        </div>
 
-      <div class="form-group" style="width: 20%; margin:0 auto; margin-top:10pt">
-          <label for="school">School</label>
-          <input class="form-control" id="school" placeholder="Enter your school" style="margin-top:-5pt">
-      </div>
-      
-      <div class="form-group" style="width: 20%; margin:0 auto; margin-top:10pt">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter your email" style="margin-top:-5pt">
-      </div>
+        <div class="col">
+            <div class = "row">
+                <div id="addRoomBtn">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRoomModal" style="font-size: 2em; text-align: center;">⊕</button>
+                </div>
+            </div>
 
-      <div class="form-group" style="width: 20%; margin:0 auto; margin-top:10pt">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Enter a password" style="margin-top:-5pt">
+            <!-- Modal -->
+<div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Create a Room</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                            <div class="form-group">
+                              <label for="roomName">Room Name:</label>
+                              <input type="text" class="form-control" id="roomName" aria-describedby="roomNameHelp" placeholder="Enter Room Name">
+                              <small id="roomNameHelp" class="form-text text-muted">Make sure to keep it short and accurate!</small>
+                            </div>
+                            <div class="form-group">
+                              <label for="tags">Tags</label>
+                              <input type="text" class="form-control" id="tags" aria-describedby="tagsHelp" placeholder="Enter Tags">
+                              <small id="tagsHelp" class="form-text text-muted">Seperate each tag with a comma</small>
+                            </div>
+                            <div class="form-group form-check">
+                              <input type="checkbox" class="form-check-input" id="casual_check">
+                              <label class="form-check-label" for="casual_check">Casual Discussion</label>
+                            </div>
+                          </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="createRoomBtn">Create</button>
+            </div>
+          </div>
+        </div>
       </div>
+        
+        <div class="col">
+            <div class = "row">
+                <div class="card" id="cards">
+                  <div class="card-body">
+                    <h5 class="card-title">Room Example 1</h5>
+                    <p class="card-text">Members: 2</p>
+                    <a href="#" class="btn btn-primary" id="joinRm1">Go to Room</a>
+                  </div>
+                </div>
+            </div>
 
-      <div class="text-center">
-        <button type="button" id="createUser" class="btn btn-primary" style="width:20%;margin-top:15pt">Create User</button>
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 4</h5>
+                      <p class="card-text">Members: 1</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 7</h5>
+                      <p class="card-text">Members: 5</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class = "row">
+                <div class="card" id="cards">
+                  <div class="card-body">
+                    <h5 class="card-title">Room Example 2</h5>
+                    <p class="card-text">Members: 4</p>
+                    <a href="#" class="btn btn-primary">Go to Room</a>
+                  </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 5</h5>
+                      <p class="card-text">Members: 5</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 8</h5>
+                      <p class="card-text">Members: 3</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class = "row">
+                <div class="card" id="cards">
+                  <div class="card-body">
+                    <h5 class="card-title">Room Example 3</h5>
+                    <p class="card-text">Members: 1</p>
+                    <a href="#" class="btn btn-primary">Go to Room</a>
+                  </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 6</h5>
+                      <p class="card-text">Members: 5</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 9</h5>
+                      <p class="card-text">Members: 2</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
       </div>
-    </form>
+  </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -59,7 +195,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script src="./index.js" type="text/javascript"></script>
-  
+    <script src="./index.js"></script>
   </body>
 </html>
