@@ -3,26 +3,35 @@
 <head>
   <title>Twilio Video - Video Quickstart</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 </head>
-<body>
-<div id="remote-media"></div>
-<div id="controls">
-  <div id="preview">
-    <p class="instructions">Hello Beautiful</p>
-    <div id="local-media"></div>
-    <button id="button-preview">Preview My Camera</button>
+<body style="font-family: lato, sans-serif">
+  <div id="topBlackBar" style="border-top: 50px solid #000;">
+        <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;"><b>ONLINE</b>VERSITY</h1>
   </div>
-  <div id="room-controls">
-    <p class="instructions">Room Name:</p>
-    <input id="room-name" type="text" placeholder="Enter a room name" />
-    <button id="button-join">Join Room</button>
-    <button id="button-leave">Leave Room</button>
+
+  <h4 style="margin-left:2%; margin-top:1%; margin-bottom:-1%">Transcript</h4>
+  <div id="log" style="background-color:#bebebe; width: 20%; height: 40em; 
+  margin: 2%; text-align: left; padding: 2%; float: left; overflow-y: scroll;"></div>
+  
+  <div class="form-group" style="float:left; width:20%; text-align:center; margin-top:10%">
+      <label for="room-name" >Room Name</label>
+      <input type="text" class="form-control"; id="room-name"; placeholder="Enter a room name" style="margin-bottom:10pt">
+      <button class="btn btn-dark" id="button-join" style="margin:5px">Join Room</button>
+      <button class="btn btn-dark" id="button-leave" style="margin:5px" onPr>Leave Room</button>
   </div>
-  <div id="log"></div>
-</div>
+  
+  <div id="controls">
+    <div id="preview">
+        <p class="instructions">Hello Beautiful</p>
+        <div id="local-media"></div>
+        <button id="button-preview">Preview My Camera</button>
+    </div>
+  </div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="index.js"></script>
+<script src="../src/index.js"></script>
 <script src="speech.js"></script>
 </body>
 </html>
