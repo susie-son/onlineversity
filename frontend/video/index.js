@@ -35038,6 +35038,18 @@ $.getJSON('/token', function(data) {
   // Bind button to leave Room.
   document.getElementById('button-leave').onclick = function() {
     //log('Leaving room...');
+    console.log('LEAVE ROOM');
+    var path = window.location.pathname;
+    var lastIndex = path.lastIndexOf('/');
+    var secondLast = path.substring(0, lastIndex-1).lastIndexOf('/');
+    var roomID = path.substring(secondLast+1, lastIndex);
+    lastIndex = secondLast;
+    var secondLast = path.substring(0, lastIndex-1).lastIndexOf('/');
+    var course = path.substring(secondLast+1, lastIndex);
+    console.log(course, roomID, path);
+    $.get('/leaveRoom', {course: course, roomID: roomID}, function (id, textStatus, jqXHR){ });
+    window.location.href = 'http://'+ window.location.host + '/home';
+
     activeRoom.disconnect();
   };
 });

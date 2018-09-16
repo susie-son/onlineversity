@@ -89,7 +89,7 @@
 
     function joinRoom( roomID){
         $.get('/joinRoom', {course: course, roomID: roomID}, function (id, textStatus, jqXHR){
-            if(id==roomID) window.location.href = 'http://'+ window.location.host + '/room/'+id;
+            if(id==roomID) window.location.href = 'http://'+ window.location.host + '/room/'+course+'/'+id;
             else alert('Failed to join room');
         });
     }
