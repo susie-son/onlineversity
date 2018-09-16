@@ -114,16 +114,18 @@ exports.leaveRoom = function(roomID, course){
     });
 }
 
-exports.joinRoom = function(roomID, course){
+exports.joinRoom = function(roomID, course, res){
     var roomRef = db.ref('rooms/'+course+'/'+roomID);
     roomRef.once('value').then(function(snapshot) {
         var room = snapshot.val();
         if(!room) {
-            console.log("error!!! no room");
+            console.log("error!!! no room", roomID, course);
+            res.send();
         } else {
             console.log(room);
             room.memberCount++;
             roomRef.update(room);
+            res.send(roomID);
         }
         
     });

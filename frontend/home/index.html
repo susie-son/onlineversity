@@ -33,26 +33,27 @@
       <h1 style="color:white; position:absolute; top:8pt; left: 2%; font-size:20pt;"><b>ONLINE</b>VERSITY</h1>
     </div>
     
-    <div class = "container-fluid" style="left:2%; margin-top:2%">
-      <div class="row">
-          <div class="col-2">
-              <div class="btn-group-vertical">
-                  <button type="button" class="btn-dark btn-lg btn-block" id="cpsc" style="background: #7c7c7c">Computer Science</button>
-                  <button type="button" class="btn-dark btn-lg btn-block" id="math">Mathematics</button>
-                  <button type="button" class="btn-dark btn-lg btn-block" id="english">English</button>
-                  <button type="button" class="btn-dark btn-lg btn-block" id="physics">Physics</button>
-                  <button type="button" class="btn-dark btn-lg btn-block" id="chemistry">Chemistry</button>
-                  <button type="button" class="btn-dark btn-lg btn-block" id="biology">Biology</button>
-              </div>
-          </div>
-  
-          <div class="col">
-              <div class = "row">
-                  <div id="addRoomBtn" style="margin-bottom:10px; margin-left:15px;">
-                      <button type="button" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#addRoomModal" style="font-size: 1.5em; text-align: center;" id="cards">⊕</button>
-                  </div>
-              </div>
-  
+  <div class = "container-fluid" style="margin:2%">
+    <div class="row">
+        <div class="col-2">
+            <ul class="btn-group-vertical" style="padding: 0px;" id="courseList">
+                <!-- <button type="button" class="btn-dark btn-lg btn-block" id="cpsc">Computer Science</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="math">Mathematics</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="english">English</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="physics">Physics</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="chemistry">Chemistry</button>
+                <button type="button" class="btn-dark btn-lg btn-block" id="biology">Biology</button> -->
+            </ul>
+        </div>
+
+        <div>
+        <div class="col">
+            <div class = "row">
+                <div id="addRoomBtn" style="margin-bottom:10px; margin-left:15px;">
+                    <button type="button" class="btn btn-outline-light btn-block" data-toggle="modal" data-target="#addRoomModal" style="font-size: 1.5em; text-align: center;"  id="cards">⊕</button>
+                </div>
+            </div>
+
             <!-- Modal -->
         <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -89,10 +90,21 @@
             </div>
           </div>
         </div>
-          
-          <div class="col" id="cards-col">
-              <div class = "row">
-                  <div class="card bg-dark text-white" id="cards">
+      </div>
+        
+        <div class="col" id="cards-col">
+            <!-- <div class = "row">
+                <div class="card" id="cards">
+                  <div class="card-body">
+                    <h5 class="card-title">Room Example 1</h5>
+                    <p class="card-text">Members: 2</p>
+                    <a href="#" class="btn btn-primary" id="button-join">Go to Room</a>
+                  </div>
+                </div>
+            </div>
+
+            <div class = "row">
+                <div class="card" id="cards">
                     <div class="card-body">
                       <h5 class="card-title">Ryan's Final Review</h5>
                       <p class="card-text">Members: 6</p>
@@ -101,16 +113,18 @@
                   </div>
               </div>
 
-              <div class = "row">
-                  <div class="card bg-dark text-white" id="cards">
-                      <div class="card-body">
-                        <h5 class="card-title">CPSC 302</h5>
-                        <p class="card-text">Members: 3</p>
-                        <a href="#" class="btn btn-outline-light btn-block">GO TO ROOM</a>
-                      </div>
-                  </div>
-             </div>
-        </div>
+            <div class = "row">
+                <div class="card" id="cards">
+                    <div class="card-body">
+                      <h5 class="card-title">Room Example 7</h5>
+                      <p class="card-text">Members: 5</p>
+                      <a href="#" class="btn btn-primary">Go to Room</a>
+                    </div>
+                </div>
+            </div>-->
+          </div> 
+      </div>
+    </div>
       </div>
   </div>
 

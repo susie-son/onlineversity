@@ -2,32 +2,55 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
     var user = {};
     var list = {};
-    var course = "cpsc";
+    var rooms = {};
+    var course = "";
     $(document).ready(function () {
         $.get('/getUser', function (data, textStatus, jqXHR){
             user = data;
             console.log(user);
             if(!user) window.location.href = 'http://'+ window.location.host + '/signIn';
+            else {
+              //case for no courses (add course)
+              course = Object.keys(user.courses)[0];
+              if(course) getRooms(course);
+
+              var list = document.getElementById('courseList');
+              for(var c in user.courses){
+                var newButton = document.createElement('button');
+                newButton.appendChild(document.createTextNode(c)); 
+                newButton.className = 'btn-dark btn-lg btn-block';
+                newButton.style = "background: #7c7c7c";
+                newButton.addEventListener('click', function(event){
+                  console.log("click listener", event.target.innerHTML);
+                  getRooms(event.target.innerHTML);
+                });
+                console.log(newButton);
+                console.log(document.getElementById('courseList'));
+                list.appendChild(newButton);
+              }
+            }
         });
 
-        document.querySelector('#cpsc').onclick = function() {
-          course = "cpsc";
-        };
-        document.querySelector('#math').onclick = function() {
-          course = "math";
-        };
-        document.querySelector('#english').onclick = function() {
-          course = "english";
-        };
-        document.querySelector('#physics').onclick = function() {
-          course = "physics";
-        };
-        document.querySelector('#chemistry').onclick = function() {
-          course = "chemistry";
-        };
-        document.querySelector('#biology').onclick = function() {
-          course = "biology";
-        };
+
+
+        // document.querySelector('#cpsc').onclick = function() {
+        //   course = "cpsc";
+        // };
+        // document.querySelector('#math').onclick = function() {
+        //   course = "math";
+        // };
+        // document.querySelector('#english').onclick = function() {
+        //   course = "english";
+        // };
+        // document.querySelector('#physics').onclick = function() {
+        //   course = "physics";
+        // };
+        // document.querySelector('#chemistry').onclick = function() {
+        //   course = "chemistry";
+        // };
+        // document.querySelector('#biology').onclick = function() {
+        //   course = "biology";
+        // };
 
         var addRoomBtn = document.querySelector('#addRoomBtn');
       addRoomBtn.addEventListener("click", function() {
@@ -64,10 +87,10 @@
       document.querySelector("#cards-col").appendChild(row);
     });
 
-    function joinRoom(course, roomID){
-        $.get('/joinRooms', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
-            //success
-            window.location.href = 'http://'+ window.location.host + '/room/'+id;
+    function joinRoom( roomID){
+        $.get('/joinRoom', {course: course, roomID: roomID}, function (id, textStatus, jqXHR){
+            if(id==roomID) window.location.href = 'http://'+ window.location.host + '/room/'+id;
+            else alert('Failed to join room');
         });
     }
 
@@ -75,6 +98,47 @@
         $.get('/getRooms', {course: course}, function (data, textStatus, jqXHR){
             list = data;
             console.log(list);
+
+            var roomslist = document.getElementById('cards-col');
+            for(var id in list){
+              var h5 = document.createElement('h5');
+              h5.appendChild(document.createTextNode(list[id].name));
+              h5.className = 'card-title';
+              var p = document.createElement('p');
+              p.appendChild(document.createTextNode('Members: '+ list[id].memberCount));
+              p.className = 'card-text';
+
+              var p2 = document.createElement('p');
+              p2.appendChild(document.createTextNode('Tags: '+ list[id].tags));
+              p2.className = 'card-text';
+
+              var a = document.createElement('a');
+              a.appendChild(document.createTextNode('Go to Room'));
+              a.href = '#';
+              a.className = 'btn btn-outline-light';
+              a.id = id;
+              a.addEventListener('click', function(event){
+                console.log("click listener", event.target.id);
+                joinRoom(event.target.id);
+              });
+
+              var divBody = document.createElement('div');
+              divBody.className = 'card-body';
+              divBody.appendChild(h5);
+              divBody.appendChild(p);
+              divBody.appendChild(p2);
+              divBody.appendChild(a);
+              
+              var card = document.createElement('div');
+              card.className = 'card bg-dark text-white';
+              card.id = 'cards';
+              card.appendChild(divBody);
+
+              var nRow = document.createElement('div');
+              nRow.className = 'row';
+              nRow.appendChild(card);
+              roomslist.appendChild(nRow);
+            }
         });
     }
 
