@@ -12,8 +12,8 @@ var Firebase = require('./firebase');
 
 var http = require('http');
 var path = require('path');
-var AccessToken = require('twilio').jwt.AccessToken;
-var VideoGrant = AccessToken.VideoGrant;
+const AccessToken = require('twilio').jwt.AccessToken;
+const VideoGrant = AccessToken.VideoGrant;
 var express = require('express');
 var randomName = require('./randomname');
 
@@ -21,14 +21,7 @@ var randomName = require('./randomname');
 var app = express();
 
 // Set up the path for the quickstart.
-var signInPath = path.join(__dirname, '../frontend/signIn');
-app.use('/signIn', express.static(signInPath));
-
-var signUpPath = path.join(__dirname, '../frontend/signUp');
-app.use('/signUp', express.static(signUpPath));
-
-var homePath = path.join(__dirname, '../frontend/home');
-app.use('/home', express.static(homePath));
+app.use(express.static(path.join(__dirname, '../frontend')))
 
 var roomPath = path.join(__dirname, '../frontend/video');
 app.use('/room*', express.static(roomPath));
@@ -77,12 +70,16 @@ app.get('/getRooms', function(req, res){
 app.get('/token', function(request, response) {
   var identity = randomName();
 
+  const accSid = "AC871eea5ad13d7424858b1452afc76c33";
+  const apiKey = "SK8036d617287a88c112dfe4d9a1d0b632";
+  const apiSec = "4Ihz35U1kJAySKfoNtVHDyZRlsl3vXow";
+
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created.
   var token = new AccessToken(
-    process.env.TWILIO_ACCOUNT_SID,
-    process.env.TWILIO_API_KEY,
-    process.env.TWILIO_API_SECRET
+    accSid,
+    apiKey,
+    apiSec
   );
 
   // Assign the generated identity to the token.

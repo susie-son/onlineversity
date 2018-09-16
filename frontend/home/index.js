@@ -36,7 +36,7 @@
 
     var createRoomBtn = document.querySelector("#createRoomBtn");
     createRoomBtn.addEventListener("click", function() {
-      createRoom({memberCount: 1, name: user.name, tags: document.querySelector("#tags").value}, course);
+      createRoom({memberCount: 1, name: user.name + ":" + document.querySelector("#roomName").value, tags: document.querySelector("#tags").value}, course);
       // create a new room card
       let card = document.createElement("div");
       card.className = "card";
@@ -49,7 +49,10 @@
       let cardtext = document.createElement("p");
       let cardtext_text = document.createTextNode("Members: 1");
       cardtext.appendChild(cardtext_text);
+      let joinBtnContainer = document.createElement("div");
       let joinBtn = document.createElement("a");
+      joinBtn.id = document.querySelector("#roomName").value;
+      joinBtnContainer.appendChild(joinBtn);
       joinBtn.className = "btn btn-primary";
       let joinBtnText = document.createTextNode("Go to Room");
       joinBtn.appendChild(joinBtnText);
@@ -64,8 +67,19 @@
       document.querySelector("#cards-col").appendChild(row);
     });
 
+    // var joinBtnContainer = document.querySelector("#btnJoinContainer");
+    // joinBtnContainer.onclick = function() {
+    //   getRooms(course);
+    //   for (let i=0; i < list.length; i++) {
+    //     let temp = list[i].name.split(":");
+    //     if (temp[1] == joinBtnContainer.children[0].id) {
+    //     joinRoom(course, "LMW_Q_4Fhy11V8gu1H1");
+    //     } 
+    //   }
+    // };
+
     function joinRoom(course, roomID){
-        $.get('/joinRooms', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
+        $.get('/joinRoom', {course: course, roomID: roomID}, function (data, textStatus, jqXHR){
             //success
             window.location.href = 'http://'+ window.location.host + '/room/'+id;
         });
@@ -74,7 +88,6 @@
     function getRooms(course){
         $.get('/getRooms', {course: course}, function (data, textStatus, jqXHR){
             list = data;
-            console.log(list);
         });
     }
 
@@ -86,6 +99,7 @@
         });
     }
   });
+  
 },{}]},{},[1]);
 
 
