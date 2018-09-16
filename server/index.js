@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/createUser', function(req, res){
-  Firebase.createUser(req.body, res);
+  Firebase.createUser(JSON.parse(req.query.user), res);
 });
 
 app.get('/logIn', function(req, res){
